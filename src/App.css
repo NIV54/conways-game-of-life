@@ -1,0 +1,17 @@
+:root {
+  --cell-size: 20px;
+}
+
+.cell {
+  height: var(--cell-size);
+  width: var(--cell-size);
+  border: 1px solid black;
+}
+
+.cell-active {
+  background-color: pink;
+}
+
+.cell-inactive {
+  background-color: white;
+}

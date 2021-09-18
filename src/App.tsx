@@ -1,3 +1,5 @@
+import "./App.css";
+
 import produce from "immer";
 import React, { useCallback, useRef, useState } from "react";
 
@@ -70,17 +72,14 @@ function App() {
       >
         {running ? "Stop" : "Start"}
       </button>
-      <div style={{ display: "grid", gridTemplateColumns: `repeat(${colCount}, 20px)` }}>
+      <div
+        style={{ display: "grid", gridTemplateColumns: `repeat(${colCount}, var(--cell-size))` }}
+      >
         {grid.map((row, i) =>
           row.map((col, j) => (
             <div
               key={`${i} - ${j}`}
-              style={{
-                height: 20,
-                width: 20,
-                border: "1px solid black",
-                backgroundColor: col === 0 ? "white" : "pink"
-              }}
+              className={`cell ${col === 0 ? "cell-inactive" : "cell-active"}`}
               onClick={() => {
                 const newGrid = produce(grid, gridCopy => {
                   gridCopy[i][j] = gridCopy[i][j] === 0 ? 1 : 0;
